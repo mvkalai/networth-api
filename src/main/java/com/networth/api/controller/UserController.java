@@ -49,4 +49,13 @@ public class UserController {
         response.setSuccessMessage(Constants.SUCCESS);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<Response<User>> forgotPassword(User user) throws ActionFailureException {
+        Response<User> response = new Response<>();
+        response.setData(Arrays.asList(userService.resetPassword(user)));
+        response.setStatusCode(EStatusCode.SUCCESS.name());
+        response.setSuccessMessage(Constants.SUCCESS);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
