@@ -18,7 +18,8 @@ public enum EStatusCode {
     ERROR_ON_DELETE("Exception occurred while deleting"),
     INTERNAL_SERVER_ERROR("UNABLE_TO_PROCESS_REQUEST"),
     RECORD_NOT_FOUND("Exception occured while fetching data"),
-    ERROR_ON_GET("Exception occured while getting data");
+    ERROR_ON_GET("Exception occured while getting data"),
+    ERROR_ON_LOGIN("Your username and password is invalid");
 
     String message;
 
