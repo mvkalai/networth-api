@@ -22,6 +22,14 @@ public class UserService {
         }
     }
 
+    public User resetPassword(User user) throws ActionFailureException {
+        try {
+            return userRepository.save(user);
+        } catch (Exception ex) {
+            throw new ActionFailureException(EStatusCode.ERROR_ON_UPDATE.name(), ex);
+        }
+    }
+
     public User login(User user) throws ActionFailureException{
         User saveUser = userRepository.findByUsername(user.getUsername());
         if (saveUser ==null || !user.getPassword().equals(saveUser.getPassword()))
