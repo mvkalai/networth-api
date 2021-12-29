@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Response<User>> addUser(User user)
+    public ResponseEntity<Response<User>> addUser(@RequestBody User user)
             throws ActionFailureException {
         Response<User> response = new Response<>();
         response.setData(Arrays.asList(userService.addUser(user)));
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Response<User>> login(User user) throws ActionFailureException {
+    public ResponseEntity<Response<User>> login(@RequestBody User user) throws ActionFailureException {
         Response<User> response = new Response<>();
         response.setData(Arrays.asList(userService.login(user)));
         response.setStatusCode(EStatusCode.SUCCESS.name());
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<Response<User>> resetPassword(User user) throws ActionFailureException {
+    public ResponseEntity<Response<User>> resetPassword(@RequestBody User user) throws ActionFailureException {
         Response<User> response = new Response<>();
         response.setData(Arrays.asList(userService.resetPassword(user)));
         response.setStatusCode(EStatusCode.SUCCESS.name());
@@ -51,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<Response<User>> forgotPassword(User user) throws ActionFailureException {
+    public ResponseEntity<Response<User>> forgotPassword(@RequestBody User user) throws ActionFailureException {
         Response<User> response = new Response<>();
         response.setData(Arrays.asList(userService.resetPassword(user)));
         response.setStatusCode(EStatusCode.SUCCESS.name());
