@@ -19,8 +19,8 @@ public enum EStatusCode {
     INTERNAL_SERVER_ERROR("UNABLE_TO_PROCESS_REQUEST"),
     RECORD_NOT_FOUND("Exception occured while fetching data"),
     ERROR_ON_GET("Exception occured while getting data"),
-    ERROR_ON_LOGIN("Your username and password is invalid");
-
+    ERROR_ON_LOGIN("Your username and password is invalid"),
+    ERROR_ON_ACCOUNT("Account doesn't exist");
     String message;
 
     private EStatusCode(String message) {

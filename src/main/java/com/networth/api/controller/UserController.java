@@ -46,15 +46,15 @@ public class UserController {
     public ResponseEntity<Response<User>> resetPassword(@RequestBody User user) throws ActionFailureException {
         Response<User> response = new Response<>();
         response.setData(Arrays.asList(userService.resetPassword(user)));
-        response.setStatusCode(EStatusCode.SUCCESS.name());
-        response.setSuccessMessage(Constants.SUCCESS);
+        response.setStatusCode(EStatusCode.RECORD_UPDATED_SUCCESSFULLY.name());
+        response.setSuccessMessage(Constants.RECORD_UPDATED_SUCCESSFULLY);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<Response<User>> forgotPassword(@RequestBody User user) throws ActionFailureException {
+    public ResponseEntity<Response<User>> forgotPassword(String username) throws ActionFailureException {
         Response<User> response = new Response<>();
-        response.setData(Arrays.asList(userService.resetPassword(user)));
+        response.setData(Arrays.asList(userService.forgetPassword(username)));
         response.setStatusCode(EStatusCode.SUCCESS.name());
         response.setSuccessMessage(Constants.SUCCESS);
         return new ResponseEntity<>(response, HttpStatus.OK);

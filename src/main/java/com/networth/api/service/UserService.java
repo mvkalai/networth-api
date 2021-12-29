@@ -30,6 +30,15 @@ public class UserService {
         }
     }
 
+    public User forgetPassword(String userName) throws ActionFailureException {
+        User saveUser = userRepository.findByUsername(userName);
+        if (saveUser ==null)
+        {
+            throw new ActionFailureException(EStatusCode.ERROR_ON_ACCOUNT.name());
+        }
+        return saveUser;
+    }
+
     public User login(User user) throws ActionFailureException{
         User saveUser = userRepository.findByUsername(user.getUsername());
         if (saveUser ==null || !user.getPassword().equals(saveUser.getPassword()))
